@@ -55,6 +55,22 @@ For the database, I had to decide between SQL and NoSQL. While I like MongoDB an
 
 With that explanation out of the way, I would formally invite you to read the daily work logs below. I hope you enjoy the read.
 
+# 1/9/26
+
+---
+
+Day 1 – Project Setup and Initial Structure
+
+Today I set up the basic project structure, keeping client and server in the same repo as separate directories. I installed the required dependencies for each and started initial React setup in client. I had planned to create a reusable banner component, but since it was already late, I’ll tackle that tomorrow.
+
+On the backend, I worked on server.js, adding the necessary imports and placeholder sections for session management and Passport authentication (to be implemented once I study them more in depth).
+
+A key note for today: I added some top-level, global middleware directly in server.js. I also created a middleware folder, but it doesn’t show on GitHub yet because empty directories aren’t pushed. The middleware here is simple; if it were more complex or reusable, I would place it in the middleware folder.
+
+I also added a catch-all middleware at the end of the stack to log unexpected requests. This acts as an early warning system for any unusual or potentially malicious requests hitting the server—a small step toward building a secure foundation.
+
+---
+
 
 
 
