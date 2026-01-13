@@ -1,0 +1,104 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --bg-main: #F4F6F8;        /* body background soft paper gray */
+    --bg-header: #1F2A36;      /* header/nav deep slate blue */
+    --bg-footer: #18212B;      /* footer slightly darker than header */
+
+    --text-main: #1E2933;      /* primary body text */
+    --text-muted: #6B7280;     /* secondary text */
+
+    --accent-blue: #3B82F6;    /* tech blue for links/active states */
+    --accent-gold: #D4AF37;    /* muted gold */
+    --border-soft: #D1D5DB;
+}
+
+header {
+    width: 100vw;
+    height: 15vh;
+    display: flex;
+    flex-direction: row;
+    font-family: 'Playfair Display', serif;
+    background-color: rgba(31, 42, 54, 0.85);
+    transition: background-color 0.25s ease, box-shadow 0.25s ease;
+    color: var(--text-muted);
+    padding: 3px;
+    justify-content: space-between;
+    align-items: center;
+    border:solid var(--border-soft) 3px;
+    border-radius: 5px;
+}
+
+header > * {
+    margin: 5px;
+}
+
+#logo-container {
+    width: 100px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    /*border: solid yellow 2px; for testing and design*/
+}
+
+#site-logo {
+    width: 75px;
+    height: 75px;
+    border-radius: 25px;
+}
+
+#site-logo:hover {
+    cursor: pointer;
+    border-radius: 25px;
+    border: solid;
+    border-color: var(--accent-blue);
+}
+
+#top-nav {
+    /*border: solid; for testing and design*/
+    width: 80%;
+}
+
+#top-nav-ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    list-style-type: none;
+    white-space: no-wrap;
+}
+
+#user-logo-container{
+    height: 50px;
+    display: flex;
+    align-items: center;
+    background-color: var(--bg-main);
+    border-radius: 25px;
+    /*border: solid red 2px; for testing and design*/
+}
+
+#user-logo {
+    width: 50px;
+    height: 50px;
+}
+
+#user-logo:hover {
+    cursor: pointer;
+    border:solid;
+    border-radius: 25px;
+    border-color: var(--accent-blue);
+}
+
+header:hover {
+    background-color: rgba(31, 42, 54, 1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+#top-nav-ul > li:hover {
+    cursor: pointer;
+    color: var(--accent-blue);
+    text-decoration: underline;
+}

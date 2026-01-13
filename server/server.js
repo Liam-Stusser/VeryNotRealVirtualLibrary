@@ -48,7 +48,7 @@ app.use((err, req, res, next) =>
 
 app.all('*', (req,res) => { //I like to add a catch all other not known request method, just as a defense mechanism 
     const date = new Date();
-    console.log(`Date: ${date.toISOString()} - Method: ${req.method} - Parameters: ${req.params} - Body: ${JSON.stringify(req.body)}`);
+    console.log(`Date: ${date.toISOString()} - Method: ${req.method} - URL: ${req.originalUrl} - Body: ${JSON.stringify(req.body)}`);
     res.status(404).json({error: "Request not found"});
 })
 
