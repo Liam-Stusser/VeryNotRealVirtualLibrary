@@ -55,10 +55,8 @@ For the database, I had to decide between SQL and NoSQL. While I like MongoDB an
 
 With that explanation out of the way, I would formally invite you to read the daily work logs below. I hope you enjoy the read.
 
-# 1/9/26
-
 ---
-
+# 1/9/26
 Day 1 – Project Setup and Initial Structure
 
 Today I set up the basic project structure, keeping client and server in the same repo as separate directories. I installed the required dependencies for each and started initial React setup in client. I had planned to create a reusable banner component, but since it was already late, I’ll tackle that tomorrow.
@@ -70,6 +68,41 @@ A key note for today: I added some top-level, global middleware directly in serv
 I also added a catch-all middleware at the end of the stack to log unexpected requests. This acts as an early warning system for any unusual or potentially malicious requests hitting the server—a small step toward building a secure foundation.
 
 ---
+
+# 1/12/26  
+**Day 2 – Header and NavBar Setup**
+
+Bit of a delay getting started on this project due to… well, a lot over the weekend. I was finally able to get started on building the header and navbar, which went off to a pretty rocky start. Every time I tried to run Vite I kept getting `react not found`. Turns out I had installed `react-router` and Vite, but never actually installed `react` and `react-dom`.
+
+Alright, with that out of the way, surely `npm run dev` should work now, right?  
+Nope. `global.css` not found… okay, fix that, try again.  
+Still getting `react not found` in `App.jsx`.
+
+After digging into it, I realized Vite can be a little strict and you need to explicitly import React in `main`, `App`, and your components for everything to run cleanly. Once that was sorted, I *finally* had a website I could look at on localhost.
+
+With that hurdle out of the way, I could actually get to designing and styling the navbar. I decided to keep it simple: a site logo on the left, the nav elements in the center, and a user profile card on the far right. Since this is a techy virtual library, I went with a color scheme of blues, yellows, and soft grays to give it a calm but still modern, tech-focused feel.
+
+For the `li` items in the `ul`, I added:
+
+- **Books** – for getting to the search/books page  
+- **About** – info about the site  
+- **Create Account** – for new users  
+- **Login** – for existing users  
+
+These will probably change or expand later, but for now it feels like a solid starting point.
+
+The logo will eventually route the user back to the landing page, and the profile card will take them to their dashboard. The images and GIF were made using Sora AI, since I am very much *not* a talented artist, haha.
+
+I always find it funny that every time I start a project that involves CSS, I think:
+
+- “Man, I hate working with CSS.”  
+- “I’m not creative.”  
+- “Styling is boring.”  
+- “Animating with CSS sucks.”
+
+…and then I proceed to spend hours having the time of my life positioning things, constantly tweaking colors, figuring out the perfect spot for an element, and adding tiny subtle animations to give things more life. I always end up genuinely having fun with CSS.
+
+Tomorrow I should have enough time to work on a reusable footer component and start on the landing page. Most of the day will probably be planning/figuring out what belongs in the footer, what the landing page should contain, and the general structure and design moving forward.
 
 
 
