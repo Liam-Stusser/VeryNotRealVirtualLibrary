@@ -57,7 +57,7 @@ With that explanation out of the way, I would formally invite you to read the da
 
 ---
 # 1/9/26
-Day 1 – Project Setup and Initial Structure
+**Day 1 – Project Setup and Initial Structure**
 
 Today I set up the basic project structure, keeping client and server in the same repo as separate directories. I installed the required dependencies for each and started initial React setup in client. I had planned to create a reusable banner component, but since it was already late, I’ll tackle that tomorrow.
 
@@ -104,8 +104,29 @@ I always find it funny that every time I start a project that involves CSS, I th
 
 Tomorrow I should have enough time to work on a reusable footer component and start on the landing page. Most of the day will probably be planning/figuring out what belongs in the footer, what the landing page should contain, and the general structure and design moving forward.
 
+---
 
+# 1/19/26  
+**Day 3 – Footer Setup**
 
+Pretty straightforward work today: mostly creating a footer element and deciding what to include in it. I looked at a few different websites to see what they typically put in their footers and modeled mine after the most common patterns.  
 
+### What I Added
+- **Social Links:** Facebook, Twitter, Instagram, and GitHub icons that route to each site’s homepage. Normally, you’d link these to your own accounts, but since this is a practice project, the Very Not Real Virtual Library doesn’t have any real social media pages.  
+- **Partner/Links Section:** A spot for links to fictional partners or related pages.  
+- **Miscellaneous Section:** Items often found on other sites’ footers, such as About, Contact, and Careers. These will get dedicated pages later.  
 
+### Challenges
+- Remembering which API provides social media icons. After a few minutes of research, I found **Font Awesome** was exactly what I needed.  
+- Still figuring out the **landing page layout** and the structure of my **PostgreSQL database**. These ideas are abstract at this stage, so it’s hard to write actual code for the landing page until I finalize the design and functionality.  
 
+### Next Steps
+- Build the **landing page**.  
+- Structure the **PostgreSQL database** and determine what data needs to be stored.  
+- Once the landing page and database are ready, start implementing:  
+  - JavaScript features  
+  - Routing with **React Router**  
+  - Securing logins and session storage with `express-session` and **Passport**  
+  - Backend middleware and routes  
+
+---
