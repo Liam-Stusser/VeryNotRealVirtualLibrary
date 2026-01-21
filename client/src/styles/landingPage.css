@@ -1,0 +1,32 @@
+#landing-page-banner {
+    width: 100%;
+    height: 60vh;
+    background-image: url('../public/libraryImage.png');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #D4AF37;
+    position: relative;
+}
+
+#landing-page-banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 0;
+}
+
+#landing-page-banner > h1 {
+    font-family: 'Satisfy', cursive;
+    position: relative;
+    z-index: 1;
+    font-size: 3rem;
+}

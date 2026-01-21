@@ -1,11 +1,14 @@
 import React from 'react';
+import { Link} from "react-router-dom";
 
 export default function topNavBar()
 {
     return (
         <header id="global-top-nav" className="top-all">
             <div id="logo-container" className="top-all">
-                <img id="site-logo" src="/library-logo.gif" alt="logo"></img>
+                <Link to="/">
+                    <img id="site-logo" src="/library-logo.gif" alt="logo"></img>
+                </Link>
             </div>
             <nav id="top-nav" className="top-all">
                 <ul id="top-nav-ul" className="top-all">

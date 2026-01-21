@@ -1,14 +1,14 @@
 import React from 'react';
-import HeadNavBar from "./components/HeadNavBar.jsx";
-import Footer from "./components/Footer.jsx";
+import { BrowserRouter } from 'react-router-dom';
+import AppRoutes from './router/AppRoutes.jsx';
 
 export default function App()
 {
     return (
         <div className = "app-shell">
-        <HeadNavBar></HeadNavBar>
-        <main className = "app-content"></main>
-        <Footer></Footer>
+            <BrowserRouter>
+                <AppRoutes />
+            </BrowserRouter>
         </div>
     );
 }

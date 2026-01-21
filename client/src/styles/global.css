@@ -21,7 +21,7 @@ html, body, #root {
 }
 
 :root {
-    --bg-main: #F4F6F8;        /* body background soft paper gray */
+    --bg-main: #d9dde1;        /* body background soft paper gray */
     --bg-header: #1F2A36;      /* header/nav deep slate blue */
     --bg-footer: #18212B;      /* footer slightly darker than header */
 
