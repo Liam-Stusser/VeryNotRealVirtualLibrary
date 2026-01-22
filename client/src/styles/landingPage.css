@@ -1,7 +1,7 @@
 #landing-page-banner {
     width: 100%;
     height: 60vh;
-    background-image: url('../public/libraryImage.png');
+    background-image: url('/libraryImage.png');
     background-size: cover;
     background-position: center;
     display: flex;
@@ -29,4 +29,31 @@
     position: relative;
     z-index: 1;
     font-size: 3rem;
+}
+
+#landing-page-content-one {
+    width: 100%;
+    height: 60vh; 
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border: solid blue;
+}
+
+#landing-page-content-two {
+    width: 100%;
+    height: 60vh;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border: solid red;
+}
+
+#landing-page-content-three {
+    width: 100%;
+    height: 60vh;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border: solid green;
 }

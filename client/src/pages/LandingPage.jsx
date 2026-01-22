@@ -12,6 +12,15 @@ export default function landingPage() {
                     <h1>Welcome to the</h1>
                     <h1>Very Not Real Virtual Library</h1>
                 </div>
+                <div id="landing-page-content-one" className="app-content">
+                    <h1>First content</h1>
+                </div>
+                <div id="landing-page-content-two" className="app-content">
+                    <h1>Second content</h1>
+                </div>
+                <div id="landing-page-content-three" className="app-content">
+                    <h1>Third content</h1>
+                </div>
             </main>
             <Footer></Footer>
         </div>
