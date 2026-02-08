@@ -34,26 +34,102 @@
 #landing-page-content-one {
     width: 100%;
     height: 60vh; 
-    align-items: center;
-    justify-content: center;
+    padding-top: 25px;
     text-align: center;
-    border: solid blue;
+    /*border: solid blue; for testing and design */
+      background: linear-gradient(
+        to right,
+        rgba(31, 42, 54, 0.8) 0%,
+        rgba(31, 42, 54, 1) 100%
+    );
+    color: #D4AF37;
+}
+
+#content-one-container {
+    width: 100%;
+    height: 80%;
+    display: flex;
+    flex-direction: row;
+    font-size: large;
+}
+
+#content-one-left {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding-left: 10%;
+    color: #D1D5DB;
+}
+
+#content-one-right {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+#content-one-right img {
+    width: 50%;
+    height: 90%;
+    border-radius: 150px;
 }
 
 #landing-page-content-two {
     width: 100%;
     height: 60vh;
-    align-items: center;
-    justify-content: center;
+    padding-top: 25px;
     text-align: center;
-    border: solid red;
+    background: linear-gradient(
+        to left,
+        rgba(31, 42, 54, 0.8) 0%,
+        rgba(31, 42, 54, 1) 100%
+    );
+    color: #D4AF37;
+}
+
+#carousel-container {
+    width: 100%;
+    height: 80%;
+    display: flex;
+    flex-direction: row;
+    font-size: large;
+    align-items: center;
+    justify-content: space-evenly;
+    color: #D1D5DB;
 }
 
 #landing-page-content-three {
     width: 100%;
     height: 60vh;
+    padding-top: 25px;
     align-items: center;
     justify-content: center;
     text-align: center;
-    border: solid green;
+    background: linear-gradient(
+        to right,
+        rgba(31, 42, 54, 0.8) 0%,
+        rgba(31, 42, 54, 1) 100%
+    );
+    color: #D4AF37;
+}
+
+#content-three-container {
+    width: 100%;
+    height: 80%;
+    display: flex;
+    flex-direction: row;
+    font-size: large;
+    align-items: center;
+    justify-content: space-evenly;
+    color: #D1D5DB;
+}
+
+#content-three-container img {
+    width: 200px;
+    height: 60%;
+    border-radius: 150px;
 }

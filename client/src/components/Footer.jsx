@@ -4,7 +4,7 @@ export default function footer()
 {
     return (
         <footer id = "global-footer" className = "footer-all">
-            <p id = "footer-legal" className = "footer-all">© 2026 Fake Virtual Library Inc. All rights reserved.</p>
+            <p id = "footer-legal" className = "footer-all">© 2026 Fake Virtual Library Inc. All rights reserved. Developed by Liam Stusser</p>
             <div id = "footer-content" className = "footer-all">
                <div id = "footer-socials" className = "footer-all">
                     <div><a href="https://www.facebook.com" target = "_blank" rel="noopener noreferrer"><i className="fa-brands fa-facebook-f"></i></a></div>
