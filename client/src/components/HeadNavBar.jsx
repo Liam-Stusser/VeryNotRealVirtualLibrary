@@ -13,8 +13,8 @@ export default function topNavBar()
             <nav id="top-nav" className="top-all">
                 <ul id="top-nav-ul" className="top-all">
                     <li>Books</li>
-                    <li>About</li>
-                    <li>Create Account</li>
+                    <Link to="/about"><li>About</li></Link>
+                    <Link to="/create-account"><li>Create Account</li></Link>
                     <li>Login</li>
                 </ul>
             </nav>

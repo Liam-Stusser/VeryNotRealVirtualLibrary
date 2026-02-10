@@ -10,6 +10,11 @@ html, body, #root {
     margin: 0;
 }
 
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
 .app-shell {
     display: flex;
     flex-direction: column;
@@ -25,6 +30,7 @@ html, body, #root {
     --bg-main: #d9dde1;        /* body background soft paper gray */
     --bg-header: #1F2A36;      /* header/nav deep slate blue */
     --bg-footer: #18212B;      /* footer slightly darker than header */
+    --bg-about: #0F1720;      /* about page card background, a very dark slate for contrast */
 
     --text-main: #1E2933;      /* primary body text */
     --text-muted: #6B7280;     /* secondary text */
@@ -113,7 +119,11 @@ header:hover {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
 
-#top-nav-ul > li:hover {
+#top-nav-ul a {
+  display: inline-block;
+}
+
+#top-nav-ul > a:hover {
     cursor: pointer;
     color: var(--accent-blue);
     text-decoration: underline;

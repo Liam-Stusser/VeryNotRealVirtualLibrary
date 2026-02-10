@@ -1,0 +1,124 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+#about-page-content {
+    width: 100%;
+    padding: 80px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+    background-color: var(--bg-about);
+}
+
+#about-page-content::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60vh;
+    pointer-events: none;
+    z-index: 0;
+
+    background:
+        radial-gradient(circle at top left,
+            rgba(212, 175, 55, 0.14),
+            rgba(212, 175, 55, 0.04),
+            rgba(15, 23, 32, 0.0) 45%),
+        radial-gradient(circle at 30% 20%,
+            rgba(255, 255, 255, 0.03),
+            rgba(255, 255, 255, 0.0) 70%);
+
+    filter: blur(45px);
+}
+
+#about-page-content > * {
+    position: relative;
+    z-index: 1;
+}
+
+.about-content-one,
+.about-content-two,
+.about-content-three,
+.about-content-four,
+.about-content-five {
+    width: 85%;
+    max-width: 1000px;
+    background:
+        linear-gradient(to right,
+            rgba(31, 42, 54, 0.92),
+            rgba(31, 42, 54, 0.98));
+    backdrop-filter: blur(2px);
+    border-radius: 16px;
+    padding: 40px 50px;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.35);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.about-content-one:hover,
+.about-content-two:hover,
+.about-content-three:hover,
+.about-content-four:hover,
+.about-content-five:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 14px 36px rgba(0, 0, 0, 0.45);
+}
+
+#about-page-content h1 {
+    font-family: 'Playfair Display', serif;
+    color: var(--accent-gold);
+    font-size: 2.1rem;
+    margin-bottom: 28px;
+    text-align: center;
+}
+
+#about-page-content ul {
+    list-style-type: disc;
+    padding-left: 40px;
+}
+
+#about-page-content li {
+    font-family: system-ui, sans-serif;
+    color: #E5E7EB;
+    font-size: 1.15rem;
+    line-height: 1.9;
+    margin-bottom: 18px;
+}
+
+.about-content-five li {
+    color: #D1D5DB;
+    font-size: 1.05rem;
+}
+
+#about-page-content a {
+    color: var(--accent-blue);
+    font-weight: 500;
+}
+
+#about-page-content a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+
+    .app-content-one,
+    .app-content-two,
+    .app-content-three,
+    .app-content-four,
+    .app-content-five {
+        width: 92%;
+        padding: 30px;
+    }
+
+    #about-page-content h1 {
+        font-size: 1.7rem;
+    }
+
+    #about-page-content li {
+        font-size: 1.05rem;
+    }
+}
