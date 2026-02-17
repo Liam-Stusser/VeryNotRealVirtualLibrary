@@ -1,0 +1,124 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.main-content {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    align-items: center;
+    background-color: var(--bg-about);
+}
+
+.login-container {
+    width: 100%;
+    max-width: 520px;
+    padding: 40px 45px;
+
+    background: linear-gradient(
+        to right,
+        rgba(31, 42, 54, 0.92),
+        rgba(31, 42, 54, 0.98)
+    );
+
+    backdrop-filter: blur(3px);
+    border-radius: 18px;
+
+    border: 2px solid rgba(212, 175, 55, 0.45);
+    box-shadow:
+        0 10px 28px rgba(0, 0, 0, 0.45),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.03);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+
+    color: #E5E7EB;
+}
+
+.login-form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.login-form .form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-form label {
+    font-size: 0.9rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #CBD5E1;
+    margin-bottom: 6px;
+}
+
+.login-form input {
+    width: 100%;
+    padding: 14px 16px;
+
+    background-color: rgba(15, 23, 32, 0.85);
+    color: #E5E7EB;
+
+    border: 1px solid rgba(96, 165, 250, 0.35);
+    border-radius: 8px;
+
+    font-size: 1.05rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.login-form input:focus {
+    outline: none;
+    border-color: var(--accent-gold);
+    box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.25);
+}
+
+.login-form button {
+    margin-top: 10px;
+    padding: 14px;
+
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+
+    color: #0F1720;
+    background: linear-gradient(
+        to right,
+        var(--accent-gold),
+        #f1d27a
+    );
+
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+
+    box-shadow: 0 6px 18px rgba(212, 175, 55, 0.35);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.login-form button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 28px rgba(212, 175, 55, 0.45);
+}
+
+.signup-link {
+    font-size: 0.9rem;
+    color: #9CA3AF;
+}
+
+.signup-link a {
+    color: var(--accent-blue);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.signup-link a:hover {
+    text-decoration: underline;
+}

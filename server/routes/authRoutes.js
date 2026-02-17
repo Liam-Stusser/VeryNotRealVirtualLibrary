@@ -1,4 +1,5 @@
 import express from 'express';
+import passport from 'passport';
 import bcrypt from 'bcrypt';
 import {pool} from '../config/db.js';
 
@@ -56,5 +57,25 @@ router.post('/register', async (req, res) => {
         res.status(500).json({error: 'Internal server error'});
     }
 })
+
+router.post('/login', (req, res, next) => {
+    passport.authenticate('local', (err, user, info) => {
+        if (err) return next(err);
+        if (!user) {
+            return res.status(401).json({ error: info.message || 'Login failed' });
+        }
+
+        req.login(user, (err) => {
+            if (err) return next(err);
+            return res.json({ message: 'Login successful', user: req.user });
+        });
+    })(req, res, next);
+});
+
+router.post('/logout', (req, res) => {
+    req.logout((err) => {
+        res.json({ message: 'Logout successful' });
+    });
+});
 
 export default router;

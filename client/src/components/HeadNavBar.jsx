@@ -15,7 +15,7 @@ export default function topNavBar()
                     <li>Books</li>
                     <Link to="/about"><li>About</li></Link>
                     <Link to="/create-account"><li>Create Account</li></Link>
-                    <li>Login</li>
+                    <Link to="/login"><li>Login</li></Link>
                 </ul>
             </nav>
             <div id="user-logo-container" className="top-all">

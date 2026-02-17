@@ -2,12 +2,8 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 import express from 'express';
-import session from 'express-session';
-import passport from 'passport';
-import pgsession from 'connect-pg-simple';
-
-import {pool} from './config/db.js';
-//import './config/passport.js';
+import session from './config/session.js';
+import passport from './config/passport.js';
 
 import authRoutes from './routes/authRoutes.js';
 //import userRoutes from './routes/user.routes.js';
@@ -24,18 +20,9 @@ app.use(cors({
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
-//Sessions
-app.use(session({
-    secret: process.env.SESSION_SECRET || 'dev-secret',
-    resave: false,
-    saveUninitialized: false,
-    cookie: {
-        httpOnly: true,
-        secure: false //TODO set up https and change this to true in production
-    }
-}))
-
-//Passport (need to study still)
+app.use(session);
+app.use(passport.initialize());
+app.use(passport.session());
 
 //Routes
 app.use('/api/auth', authRoutes); 
