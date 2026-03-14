@@ -2,6 +2,7 @@ import express from 'express';
 import passport from 'passport';
 import bcrypt from 'bcrypt';
 import {pool} from '../config/db.js';
+import {findUserById} from '../models/userModel.js';
 
 const router = express.Router();
 
@@ -65,9 +66,25 @@ router.post('/login', (req, res, next) => {
             return res.status(401).json({ error: info.message || 'Login failed' });
         }
 
-        req.login(user, (err) => {
+        req.login(user, async(err) => {
             if (err) return next(err);
-            return res.json({ message: 'Login successful', user: req.user });
+
+            const fullUser = await findUserById(user.id);
+            
+            req.session.user = {
+                id: fullUser.id,
+                username: fullUser.username,
+                email: fullUser.email
+            }
+            
+            return res.json({ 
+                message: 'Login successful', 
+                user: {
+                    id: fullUser.id,
+                    username: fullUser.username,
+                    role: fullUser.role
+                } 
+            });
         });
     })(req, res, next);
 });

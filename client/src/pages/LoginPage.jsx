@@ -37,14 +37,17 @@ export default function LoginPage() {
             });
 
             const data = await response.json();
-
+            console.log('Login response data:', data); // TEMP DEBUG
             if (!response.ok) {
                 setError(data.error || 'An error occurred');
                 return;
             }
 
-            console.log('Login successful:', data); // remove later
-            navigate('/'); // TODO: change to dashboard
+            if (data.user.role === 'admin') {
+                navigate('/admin-dashboard');
+            } else {
+                navigate('/user-dashboard');
+            }
 
         } catch (err) {
             console.error(err);
