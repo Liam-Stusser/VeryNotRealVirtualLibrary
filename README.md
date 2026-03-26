@@ -1,6 +1,7 @@
 # Very Not Real Virtual Library
 
 -Brief run down if you don't want to read the whole thing below
+
 A full‑stack library platform demonstrating authentication, role based dashboards, PostgreSQL data persistence, and CRUD operations.
 
 ## Live Demo
