@@ -30,7 +30,7 @@ A full‑stack library platform demonstrating authentication, role based dashboa
 4. `npm run dev` or your specific start scripts
 
 ## Screenshots
-[Portion of the home page](./client/public/vnrlHomePage.png)
+![Portion of the home page](./client/public/vnrlHomePage.png)
 
 ---
 
