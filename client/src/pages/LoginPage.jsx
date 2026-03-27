@@ -59,6 +59,7 @@ export default function LoginPage() {
         <div className="app-shell">
             <HeadNavBar />
             <main className="main-content">
+                <h1 id="login-title">Very Not Real Virtual Library</h1>
                 <div className="login-container">
                     <h2>Login</h2>
 
