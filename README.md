@@ -216,3 +216,11 @@ Last was the create account section which is where things really start to pick-u
 With that taken care of next things I'll tackle will be the login page and I will probably have some study days rather than developing days to learn more about pg, express-sessions, and passport to get the best use out of these libraries that I can.
 
 ---
+
+# 3/26/26
+
+I have not made any updates in a while due to some ongoing personal situations but things have started calming down a bit and I was able to make some minor updates to the project. The last post was made on 2/12/26 but that was not the last time I worked on the project, I did make several small changes over the last month which can be seen in the git updates. Due to alot of personal events I did not get to work on the project as much as I would have liked, however I was still coding when I could and have mostly been grinding LeetCode the past few weeks. 
+
+Updates made today were just some styling changes like adding a title to the login-page so it looked cleaner, and adding screen shots of the app to this readme along with a short summary of it for anyone who doesnt want to read this whole thing. I will hopefully be making more updates now, and my current focus is to work on the admin dashboard and get it mostly functional, then work on the user dashboard and get that mostly functional as well. After the dashboards are up and running I will work on the React carousel for the home page to display popular books, then work on the books page so users can actually check-out books, finish the admin and user dashboard when the books page is complete, make some final touches and improvements, then lastly prep the app for deployment on my Pi.
+
+---
