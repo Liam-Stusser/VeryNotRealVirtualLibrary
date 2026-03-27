@@ -1,5 +1,39 @@
 # Very Not Real Virtual Library
 
+-Brief run down if you don't want to read the whole thing below
+
+A full‑stack library platform demonstrating authentication, role based dashboards, PostgreSQL data persistence, and CRUD operations.
+
+## Live Demo
+[Will provide here when its up and running]
+
+## Features
+- User authentication (login/signup)
+- Admin dashboard with book/user management
+- User dashboard for browsing/checking out books
+- Persistent PostgreSQL database
+- Express backend + React frontend
+
+## Tech Stack
+- React (Vite)
+- React Router
+- Express.js
+- PostgreSQL (`pg`)
+- Passport auth
+- Session storage
+- bcrypt password hashing
+
+## How to Run
+1. `git clone ...`
+2. `npm install`
+3. Configure your `.env`
+4. `npm run dev` or your specific start scripts
+
+## Screenshots
+-Will add at a later date
+
+---
+
 Hi, welcome to the **Very Not Real Virtual Library** repository.
 
 This is *not* intended in any way to be a “real” website—hence the name. It exists purely to demonstrate and practice my full-stack development skills and to act as a project I can show to potential future employers.
