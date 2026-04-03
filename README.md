@@ -33,8 +33,10 @@ A full‑stack library platform demonstrating authentication, role based dashboa
 ![Portion of the home page](./client/public/vnrlHomePage.png)
 ![Portion of the about page](./client/public/vnrlAboutPage.png)
 ![Most of the create account page](./client/public/vnrlCreatePage.png)
-![Screenshot of the login page](./client/public/vnrlLoginPage.png)
+![Screenshot of the login page](./client/public/vnrlLoginPageI.png)
 ---
+
+# Dev Journal (optional read from here on out, just a deep dive into specific choices)
 
 Hi, welcome to the **Very Not Real Virtual Library** repository.
 
