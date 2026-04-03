@@ -236,7 +236,9 @@ Session data is stored using connect-pg-simple in our Postgres database. When a 
 With this in place, clicking the user profile icon now:
 
 Routes to the admin dashboard if the user is an admin
+
 Routes to the user dashboard if the user is a standard user
+
 Routes to the login page if no active session exists
 
 Because authentication state is persisted via sessions, users can navigate away from their dashboard (e.g., back to the home page) and return without needing to log in again. I also added a ProtectedRoute component on the frontend. While the backend already enforces authorization, this prevents users from manually navigating to restricted routes (like /admin-dashboard) and instead redirects them appropriately. This improves overall UX by avoiding confusing or broken states.
