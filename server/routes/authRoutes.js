@@ -90,9 +90,35 @@ router.post('/login', (req, res, next) => {
 });
 
 router.post('/logout', (req, res) => {
-    req.logout((err) => {
-        res.json({ message: 'Logout successful' });
+    req.logout(() => {
+        req.session.destroy(() => {
+            res.clearCookie('connect.sid');
+            res.json({message: 'Logout successful'});
+        })
     });
 });
+
+router.get('/session', async (req,res) => {
+    if(!req.isAuthenticated || !req.isAuthenticated())
+    {
+        return res.json( {isAuthenticated: false} );
+    }
+
+    try {
+        const user = await findUserById(req.user.id);
+
+        return res.json({
+            isAuthenticated: true,
+            user: {
+                id: user.id,
+                username: user.username,
+                role: user.role
+            }
+        });
+    } catch(err) {
+        console.error(err);
+        res.status(500).json({error: 'Internal server error' });
+    }
+})
 
 export default router;

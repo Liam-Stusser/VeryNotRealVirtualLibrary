@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Link } from "react-router-dom";
+import {useAuth} from "../context/authContext.jsx";
 import HeadNavBar from "../components/HeadNavBar.jsx";
 import Footer from "../components/Footer.jsx";
 import '../styles/loginPage.css';
@@ -13,6 +14,7 @@ export default function LoginPage() {
 
     const [error, setError] = React.useState('');
     const navigate = useNavigate();
+    const { setAuth } = useAuth();
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -42,6 +44,14 @@ export default function LoginPage() {
                 setError(data.error || 'An error occurred');
                 return;
             }
+
+            //update global auth state
+            setAuth({
+                isAuthenticated: true,
+                role: data.user.role,
+                user: data.user,
+                loading: false
+            })
 
             if (data.user.role === 'admin') {
                 navigate('/admin-dashboard');

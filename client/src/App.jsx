@@ -1,14 +1,17 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
+import { AuthProvider } from "./context/authContext.jsx";
 import AppRoutes from './router/AppRoutes.jsx';
 
 export default function App()
 {
     return (
-        <div className = "app-shell">
+        <AuthProvider>
             <BrowserRouter>
-                <AppRoutes />
+                <div className="app-shell">
+                    <AppRoutes />
+                </div>
             </BrowserRouter>
-        </div>
+        </AuthProvider>
     );
 }

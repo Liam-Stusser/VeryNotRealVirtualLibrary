@@ -1,5 +1,6 @@
 import React from 'react';
 import {Routes, Route} from "react-router-dom";
+import ProtectedRoute from "./ProtectedRoute.jsx";
 import LandingPage from "../pages/LandingPage.jsx";
 import AboutPage from "../pages/AboutPage.jsx";
 import CreateAccount from "../pages/CreateAccount.jsx";
@@ -15,8 +16,25 @@ export default function AppRoutes()
             <Route path="/about" element={<AboutPage/>}/>
             <Route path="/create-account" element={<CreateAccount/>}/>
             <Route path="/login" element={<LoginPage/>}/>
-            <Route path="/admin-dashboard" element={<AdminDashboard/>}/>
-            <Route path="/user-dashboard" element={<UserDashboard/>}/>
+            
+            {/* Protected routes */}
+            <Route
+                path="/user-dashboard"
+                element={
+                    <ProtectedRoute role="user">
+                        <UserDashboard />
+                    </ProtectedRoute>
+                }
+            />
+
+            <Route
+                path="/admin-dashboard"
+                element={
+                    <ProtectedRoute role="admin">
+                        <AdminDashboard />
+                    </ProtectedRoute>
+                }
+            />
         </Routes>
     )
 }

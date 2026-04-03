@@ -1,8 +1,29 @@
 import React from 'react';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import {useAuth} from "../context/authContext.jsx";
 
-export default function topNavBar()
+export default function TopNavBar()
 {
+    const navigate = useNavigate();
+    const { auth } = useAuth();
+
+    const handleProfileClick = () => {
+        if (auth.loading) return;
+
+        if(!auth.isAuthenticated)
+        {
+            navigate('/login');
+        }
+        else if(auth.role === 'admin')
+        {
+            navigate('/admin-dashboard');
+        }
+        else
+        {
+            navigate('/user-dashboard');
+        }
+    };
+
     return (
         <header id="global-top-nav" className="top-all">
             <div id="logo-container" className="top-all">
@@ -19,7 +40,7 @@ export default function topNavBar()
                 </ul>
             </nav>
             <div id="user-logo-container" className="top-all">
-                <img id="user-logo" src="/user-logo.png" alt="User Profile"></img>
+                <img id="user-logo" src="/user-logo.png" alt="User Profile" onClick={handleProfileClick}></img>
             </div>
         </header>
     );
