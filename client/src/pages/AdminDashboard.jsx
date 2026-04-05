@@ -8,7 +8,18 @@ export default function AdminDashboard() {
         <div className = "app-shell">
             <HeadNavBar />
             <main className = "admin-dashboard-content">
-                <h1>Admin Dashboard placeholder text</h1>
+                <div className="admin-sections">
+                    <h2>Overdue Books</h2>
+                </div>
+                <div className="admin-sections">
+                    <h2>Add New Book</h2>
+                </div>
+                <div className="admin-sections">
+                    <h2>Modify Exsisting Book</h2>
+                </div>
+                <div className="admin-sections">
+                    <h2>Delete Book</h2>
+                </div>
             </main>
             <Footer />
         </div>
