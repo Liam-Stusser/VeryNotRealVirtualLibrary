@@ -226,3 +226,25 @@ I have not made any updates in a while due to some ongoing personal situations b
 Updates made today were just some styling changes like adding a title to the login-page so it looked cleaner, and adding screen shots of the app to this readme along with a short summary of it for anyone who doesnt want to read this whole thing. I will hopefully be making more updates now, and my current focus is to work on the admin dashboard and get it mostly functional, then work on the user dashboard and get that mostly functional as well. After the dashboards are up and running I will work on the React carousel for the home page to display popular books, then work on the books page so users can actually check-out books, finish the admin and user dashboard when the books page is complete, make some final touches and improvements, then lastly prep the app for deployment on my Pi.
 
 ---
+
+# 4/2/26
+
+I'm still deciding on features and layout for the admin dashboard, so I shifted focus to improving the user profile functionality in the HeaderNav component.
+
+Session data is stored using connect-pg-simple in our Postgres database. When a user logs in, a session is created and linked to a cookie (connect.sid) stored in the browser. This allows the server to persist authentication across requests. To make use of this on the frontend, I implemented a global authentication state using React Context. On app load, the frontend queries a /session endpoint to determine whether a user is authenticated and what their role is. This state is then accessible across all components.
+
+With this in place, clicking the user profile icon now:
+
+Routes to the admin dashboard if the user is an admin
+
+Routes to the user dashboard if the user is a standard user
+
+Routes to the login page if no active session exists
+
+Because authentication state is persisted via sessions, users can navigate away from their dashboard (e.g., back to the home page) and return without needing to log in again. I also added a ProtectedRoute component on the frontend. While the backend already enforces authorization, this prevents users from manually navigating to restricted routes (like /admin-dashboard) and instead redirects them appropriately. This improves overall UX by avoiding confusing or broken states.
+
+Next step will be to implement a feature that remembers the page a user was trying to access before being redirected to login, and then returns them to that page after successful authentication.
+
+I haven’t been able to work on the project as consistently as I’d like recently due to some personal situations, but things are starting to settle down and I should be able to make more steady progress again as stated in the last log.
+
+---
