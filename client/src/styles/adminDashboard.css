@@ -1,3 +1,8 @@
+:root {
+    --text-dark: #222;
+    --input-bg: #fff;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -17,11 +22,100 @@
     flex-direction: column;
     gap: 20px;
     width: 80%;
-    height: 250px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    border: solid;
+    min-height: 250px;
+    margin: 20px 0;
+    padding: 20px;
+
+    border: 1px solid var(--accent-gold);
     border-radius: 10px;
-    border-color: var(--accent-gold);
     background-color: var(--bg-main);
+}
+
+.admin-sections h2 {
+    text-align: center;
+}
+
+#add-book-form, #modify-book-form {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    color: var(--text-dark);
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.form-group input,
+.form-group select {
+    background-color: var(--input-bg);
+    color: var(--text-dark);
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 100%;
+    font-size: 14px;
+}
+
+#modify-book-form input[name="bookId"] {
+    grid-column: span 3;      
+    justify-self: center;     
+    max-width: 300px; 
+    background-color: var(--input-bg);
+    color: var(--text-dark);
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+}
+
+#add-book-button {
+    grid-column: span 3;
+    justify-self: center;
+
+    padding: 10px 20px;
+    margin-top: 10px;
+
+    border: none;
+    border-radius: 6px;
+    background-color: var(--accent-gold);
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+
+    transition: transform 0.1s ease, opacity 0.1s ease;
+}
+
+#add-book-button:hover {
+    opacity: 0.9;
+}
+
+#add-book-button:active {
+    transform: scale(0.97);
+}
+
+@media (max-width: 900px) {
+    #add-book-form {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    #add-book-button {
+        grid-column: span 2;
+    }
+}
+
+@media (max-width: 500px) {
+    #add-book-form {
+        grid-template-columns: 1fr;
+    }
+
+    #add-book-button {
+        grid-column: span 1;
+    }
 }

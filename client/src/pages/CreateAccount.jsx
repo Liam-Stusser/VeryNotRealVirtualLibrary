@@ -71,7 +71,7 @@ export default function CreateAccount() {
                         <p><strong>*Please do not fill in any actual personal info in this form.*</strong></p>
                     </div>
                     <form id="create-account-form" autoComplete="off" onSubmit={handleSubmit}>
-                        <div className="form-group">
+                        <div className="account-form-group">
                             <label htmlFor="username">Username</label>
                             <input
                                 type="text"
@@ -82,7 +82,7 @@ export default function CreateAccount() {
                                 onChange={handleChange}>
                             </input>
                         </div>
-                        <div className="form-group">
+                        <div className="account-form-group">
                             <label htmlFor="first-name">First Name</label>
                             <input
                                 type="text"
@@ -93,7 +93,7 @@ export default function CreateAccount() {
                                 onChange={handleChange}>
                             </input>
                         </div>
-                        <div className="form-group">
+                        <div className="account-form-group">
                             <label htmlFor="last-name">Last Name</label>
                             <input
                                 type="text"
@@ -104,7 +104,7 @@ export default function CreateAccount() {
                                 onChange={handleChange}>
                             </input>
                         </div>
-                        <div className="form-group">
+                        <div className="account-form-group">
                             <label htmlFor="email">Email</label>
                             <input
                                 type="email"
@@ -115,7 +115,7 @@ export default function CreateAccount() {
                                 onChange={handleChange}>
                             </input>
                         </div>
-                        <div className="form-group">
+                        <div className="account-form-group">
                             <label htmlFor="phone">Phone Number</label>
                             <input
                                 type="tel"
@@ -125,7 +125,7 @@ export default function CreateAccount() {
                                 onChange={handleChange}>
                             </input>
                         </div>
-                        <div className="form-group">
+                        <div className="account-form-group">
                             <label htmlFor="password">Password</label>
                             <input
                                 type="password"
@@ -136,7 +136,7 @@ export default function CreateAccount() {
                                 onChange={handleChange}>
                             </input>
                         </div>
-                        <div className="form-group">
+                        <div className="account-form-group">
                             <label htmlFor="confirm-password">Confirm Password</label>
                             {error && <p className="form-error">{error}</p>}
                             <input

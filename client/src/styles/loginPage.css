@@ -48,7 +48,11 @@
     gap: 20px;
 }
 
-.login-form .form-group {
+.login-form-group{
+    color: #CBD5E1
+}
+
+.login-form .login-form-group {
     display: flex;
     flex-direction: column;
 }

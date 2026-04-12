@@ -55,7 +55,7 @@ export default function AboutPage() {
                                 corner of the navigation bar.
                             </li>
                             <li>
-                                To try the administrator features, log in using the username <strong>admin</strong> and
+                                To try the administrator features, login using the username <strong>admin</strong> and
                                 password <strong>admin123</strong>. After logging in, the profile menu will display the admin
                                 dashboard.
                             </li>

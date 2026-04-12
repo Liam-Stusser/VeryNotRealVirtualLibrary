@@ -76,7 +76,7 @@ export default function LoginPage() {
                     {error && <p className="form-error">{error}</p>}
 
                     <form className="login-form" onSubmit={handleSubmit}>
-                        <div className="form-group">
+                        <div className="login-form-group">
                             <label htmlFor="username">Username</label>
                             <input
                                 type="text"
@@ -88,7 +88,7 @@ export default function LoginPage() {
                             />
                         </div>
 
-                        <div className="form-group">
+                        <div className="login-form-group">
                             <label htmlFor="password">Password</label>
                             <input
                                 type="password"
