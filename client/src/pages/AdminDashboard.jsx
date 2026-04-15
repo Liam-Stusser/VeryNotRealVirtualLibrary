@@ -1,6 +1,7 @@
 import React from 'react';
 import HeadNavBar from "../components/HeadNavBar.jsx";
 import Footer from "../components/Footer.jsx";
+import AdminBookCard from '../components/AdminBookCard.jsx';
 import '../styles/adminDashboard.css';
 
 export default function AdminDashboard() {
@@ -11,7 +12,7 @@ export default function AdminDashboard() {
         setState(prevData => ({
             ...prevData,
             [name]: value
-        }))
+        }));
     };
 
     const [error, setError] = React.useState(''); //dont forget to add the error state to the UI later
@@ -35,6 +36,40 @@ export default function AdminDashboard() {
         coverImage: ''
     });
 
+    const [findBookForm, setFindBookForm] = React.useState({
+        title: '',
+        author: ''
+    })
+
+    const [foundBooks, setFoundBooks] = React.useState([]); //for storing the results of the find book form
+
+    const handleFindBookSubmit = async (e) => {
+        e.preventDefault();
+        setError('');
+
+        try {
+            const query = new URLSearchParams(findBookForm).toString();
+
+            const response = await fetch(`http://localhost:3000/api/admin/find-book?${query}`, {
+                method: 'GET',
+                credentials: 'include'
+            });
+
+            const data = await response.json();
+
+            if(!response.ok) {
+                setError(data.error || 'An error occurred');
+                return;
+            }
+
+            setFoundBooks(data);
+            console.log('Found books:', data);
+        } catch (err) {
+            console.error(err);
+            setError('Server not reachable');
+        }
+    }
+
     const handleAddBookSubmit = async (e) => {
         e.preventDefault();
         setError('');
@@ -47,7 +82,7 @@ export default function AdminDashboard() {
                     },
                     credentials: 'include',
                     body: JSON.stringify(addBooksForm)
-                })
+                });
 
                 const data = await response.json();
 
@@ -97,8 +132,42 @@ export default function AdminDashboard() {
             <HeadNavBar />
             <main className="admin-dashboard-content">
 
+                {/*Find book by id section*/}
+                <div className="admin-sections" id="find-book-section">
+                    <h2>Find Book ID</h2>
+                    <form id="find-book-form" onSubmit = {handleFindBookSubmit}>
+                        <div className="form-group">
+                            <label htmlFor="title">Title</label>
+                            <input type="text" id="title" name="title" 
+                             value = {findBookForm.title} 
+                             onChange={(e) => handleChange(e, setFindBookForm)} />
+                        </div>
+
+                        <div className="form-group">
+                            <label htmlFor="author">Author</label>
+                            <input type="text" id="author" name="author" 
+                             value = {findBookForm.author}
+                             onChange={(e) => handleChange(e, setFindBookForm)} />
+                        </div>
+
+                        <button id="find-book-button" type="submit">
+                            Find Book
+                        </button>
+                    </form>
+
+                    <div id="find-book-result">
+                        {foundBooks.length > 0 ? (
+                            foundBooks.map(book => (
+                                <AdminBookCard key={book.id} book={book} />
+                            ))
+                        ) : (
+                            <p>No books found. Try searching with different criteria.</p>
+                        )}
+                    </div>
+                </div>
+
                 {/*overdue books section*/}
-                <div className="admin-sections">
+                <div className="admin-sections" id="overdue-section">
                     <h2>Overdue Books</h2>
                 </div>
 

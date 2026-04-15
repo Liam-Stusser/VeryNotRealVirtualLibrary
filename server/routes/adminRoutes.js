@@ -6,6 +6,24 @@ import * as adminModel from '../models/adminModel.js';
 
 const router = express.Router();
 
+router.get('/find-book', ensureAdmin, async (req, res) => {
+    const {title, author} = req.query;
+
+    if(!title && !author)
+    {
+        return res.status(400).json({error: 'At least one search parameter (title or author) is required'});
+    }
+
+    try {
+        const books = await adminModel.findBooks(title, author);
+
+        res.status(200).json(books);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({error: 'Internal server error'});
+    }
+});
+
 router.post('/add-book', ensureAdmin, async (req, res) => {
     const {title, author, pages, copies, genre, coverImage} = req.body;
 

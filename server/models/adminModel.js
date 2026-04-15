@@ -2,6 +2,35 @@ import {pool} from '../config/db.js';
 
 const defaultImage = 'this will be cahnged to a default image later';
 
+export const findBooks = async (title, author) => {
+    const conditions = [];
+    const values = [];
+    let index = 1;
+
+    if(title)
+    {
+        conditions.push(`LOWER(title) LIKE LOWER($${index})`);
+        values.push(`%${title}%`);
+        index++;
+    }
+
+    if(author)
+    {
+        conditions.push(`LOWER(author) LIKE LOWER($${index})`);
+        values.push(`%${author}%`);
+        index++;
+    }
+
+    const query = `
+        SELECT * FROM books
+        WHERE ${conditions.join(' AND ')}
+        ORDER BY created_at DESC
+        `;
+    
+        const result = await pool.query(query, values);
+        return result.rows;
+}
+
 export const addBook = async (title, author, pages, copies, genre, coverImage) => {
 
     if(!coverImage)
@@ -46,7 +75,7 @@ export const modifyBook = async (bookId, fields) => {
         }
     }
 
-    if(updates.length === 0) return;
+    if(updates.length === 0) throw new Error('No valid fields provided for update');
 
     values.push(bookId);
 
