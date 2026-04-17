@@ -248,3 +248,37 @@ Next step will be to implement a feature that remembers the page a user was tryi
 I haven’t been able to work on the project as consistently as I’d like recently due to some personal situations, but things are starting to settle down and I should be able to make more steady progress again as stated in the last log.
 
 ---
+
+#4/16/26
+
+**Admin Dashboard Progress (~80% Complete)**
+
+Significant progress has been made on the admin dashboard, and I’d say it’s now about 80% complete. The last major piece left is the overdue books section. I *could* try to implement that now, but I think it makes more sense to wait until I’ve built out the books page, checkout functionality, and the user dashboard. That way, instead of manually inserting records into the checkout table via SQL, I can just use the app’s intended workflow like a normal person.
+
+Backend work overall wasn’t too bad mostly a lot of boilerplate for the admin routes (`GET`, `POST`, `PUT`, `DELETE`) and making sure the `verifyAdmin` middleware is properly attached to each one.
+
+The most challenging part was definitely the **modify book model**. Since not all fields are required when updating a book, I had to dynamically construct the SQL query based on which fields were provided. On top of that, the parameter names I was using in JavaScript didn’t match the column names in the database, so I had to create a mapping layer to connect the two.
+
+Could I have avoided that by just naming everything consistently from the start?  
+Yes… yes I could have.  
+
+But hindsight is 20/20, and I was deep in the zone while building out the dashboard.
+
+The final piece of that puzzle was storing the fields being updated in one array, the corresponding values in another, and incrementing an index to correctly parameterize the query. A bit tedious, but it works cleanly now.
+
+On a more personal note, I didn’t expect the hardest part of building this app to just be… life. The past four months have honestly been the roughest I’ve dealt with so far. Things are starting to calm down, but I’m still kind of in the process of decompressing from all the stress.  
+
+That said, I’m glad I kept at least some momentum going whether it was small updates here or working on LeetCode when I couldn’t fully focus on the project. It feels good to be making real progress on the app again.
+
+Next up is the **books page**, which is basically the core of the entire app. I’m thinking a clean, simple design:
+
+- Search bar at the top (title or author)  
+- Filter by category (Fiction, Non-Fiction, etc.)  
+- Books displayed as cards with:
+  - Title/info  
+  - Cover image (if available)  
+  - A single **“Check Out”** button  
+
+I *could* build out a full checkout page with due dates and extra details, but honestly, there’s something really nice about just clicking one button and being done. Simple, fast, clean...that’s the goal.
+
+---
