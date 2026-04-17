@@ -39,7 +39,12 @@ export default function AdminDashboard() {
     const [findBookForm, setFindBookForm] = React.useState({
         title: '',
         author: ''
-    })
+    });
+
+    const [deleteBookForm, setDeleteBookForm] = React.useState({
+        bookId: '',
+        confirm: ''
+    });
 
     const [foundBooks, setFoundBooks] = React.useState([]); //for storing the results of the find book form
 
@@ -121,6 +126,40 @@ export default function AdminDashboard() {
                 }
 
                 console.log('Book modified successfully:', data);
+        } catch (err) {
+            console.error(err);
+            setError('Server not reachable');
+        }
+    }
+
+    const handleDeleteBookSubmit = async (e) => {
+        e.preventDefault();
+        setError('');
+
+        if(deleteBookForm.confirm !== 'DELETE')
+        {
+            setError('You must type "DELETE" to confirm');
+            return;
+        }
+
+        try {
+            const response = await fetch('http://localhost:3000/api/admin/delete-book', {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                credentials: 'include',
+                body: JSON.stringify(deleteBookForm)
+            });
+
+            const data = await response.json();
+
+            if(!response.ok) {
+                setError(data.error || 'An error occurred');
+                return;
+            }
+
+            console.log('Book deleted successfully:', data);
         } catch (err) {
             console.error(err);
             setError('Server not reachable');
@@ -308,6 +347,23 @@ export default function AdminDashboard() {
                 {/*delete book section*/}
                 <div className="admin-sections">
                     <h2>Delete Book</h2>
+                    <form id="delete-book-form" onSubmit={handleDeleteBookSubmit}>
+                        <div className="form-group">
+                            <label htmlFor="delete-book-id">Book ID</label>
+                            <input type="text" id="delete-book-id" name="bookId"
+                             value={deleteBookForm.bookId}
+                             onChange={(e) => handleChange(e, setDeleteBookForm)} />
+                        </div>
+                        <div className="form-group">
+                            <label htmlFor="confirm-delete">Type "DELETE" to confirm</label>
+                            <input type="text" id="confirm-delete" name="confirm"
+                             value={deleteBookForm.confirm}
+                             onChange={(e) => handleChange(e, setDeleteBookForm)} />
+                        </div>
+                        <button id="delete-book-button" type="submit">
+                            Delete Book
+                        </button>
+                    </form>
                 </div>
             </main>
             <Footer />

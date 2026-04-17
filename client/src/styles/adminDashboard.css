@@ -78,6 +78,12 @@
     gap: 15px;
 }
 
+#delete-book-form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+}
+
 #find-book-button {
     grid-column: span 2;
     justify-self: center;
@@ -93,6 +99,31 @@
     cursor: pointer;
 
     transition: transform 0.1s ease, opacity 0.1s ease;
+}
+
+#delete-book-button {
+    grid-column: span 2;
+    justify-self: center;
+
+    padding: 10px 20px;
+    margin-top: 10px;
+
+    border: none;
+    border-radius: 6px;
+    background-color: var(--accent-gold);
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+
+    transition: transform 0.1s ease, opacity 0.1s ease;
+}
+
+#delete-book-button:hover {
+    opacity: 0.9;
+}
+
+#delete-book-button:active {
+    transform: scale(0.97);
 }
 
 #find-book-button:hover {

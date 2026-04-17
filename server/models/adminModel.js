@@ -88,3 +88,17 @@ export const modifyBook = async (bookId, fields) => {
 
         return await pool.query(query, values);
     }
+
+export const deleteBook = async (bookId) => {
+    const result = await pool.query(
+        `DELETE FROM books
+        WHERE id = $1
+        RETURNING *`,
+        [bookId]
+    );
+
+    if(result.rowCount === 0)
+        throw new Error('Book not found');
+
+    return result.rows[0];
+}

@@ -59,4 +59,23 @@ router.put('/modify-book', ensureAdmin, async (req, res) => {
     }
 });
 
+router.delete('/delete-book', ensureAdmin, async (req, res) => {
+    const {bookId, confirm} = req.body;
+
+    if(!bookId)
+        return res.status(400).json({error: 'Book ID is required'});
+
+    if(confirm !== 'DELETE')
+        return res.status(400).json({error: 'You must type DELETE in the confirm field to delete a book'});
+
+    try {
+        await adminModel.deleteBook(bookId);
+        res.status(200).json({message: 'Book deleted successfully'});
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({error: 'Internal server error'});
+    }
+    
+})
+
 export default router;

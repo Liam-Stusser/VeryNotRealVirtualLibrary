@@ -33,7 +33,7 @@ export default function TopNavBar()
             </div>
             <nav id="top-nav" className="top-all">
                 <ul id="top-nav-ul" className="top-all">
-                    <li>Books</li>
+                    <Link to="/books"><li>Books</li></Link>
                     <Link to="/about"><li>About</li></Link>
                     <Link to="/create-account"><li>Create Account</li></Link>
                     <Link to="/login"><li>Login</li></Link>
