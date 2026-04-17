@@ -249,7 +249,7 @@ I haven’t been able to work on the project as consistently as I’d like recen
 
 ---
 
-#4/16/26
+# 4/16/26
 
 **Admin Dashboard Progress (~80% Complete)**
 
