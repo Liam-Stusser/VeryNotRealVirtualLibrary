@@ -6,7 +6,7 @@ import session from './config/session.js';
 import passport from './config/passport.js';
 
 import authRoutes from './routes/authRoutes.js';
-//import userRoutes from './routes/userRoutes.js';
+import userRoutes from './routes/userRoutes.js';
 import adminRoutes from './routes/adminRoutes.js';
 import cors from 'cors';
 
@@ -26,7 +26,7 @@ app.use(passport.session());
 
 //Routes
 app.use('/api/auth', authRoutes); 
-//app.use('/api/user', userRoutes);
+app.use('/api/user', userRoutes);
 app.use('/api/admin', adminRoutes);
 
 //Global

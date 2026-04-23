@@ -2,6 +2,7 @@ import React from 'react';
 import HeadNavBar from '../components/HeadNavBar';
 import Footer from '../components/Footer';
 import Filter from '../components/Filter';
+import BookCard from '../components/BookCard';
 import '../styles/booksPage.css';
 
 export default function BooksPage() {
@@ -11,28 +12,27 @@ export default function BooksPage() {
     });
 
     const [filters, setFilters] = React.useState([]);
+    const [books, setBooks] = React.useState([]);
 
     const handleChange = (e) => {
-        const {name, value} = e.target;
+        const { name, value } = e.target;
         setValues(prevData => ({
             ...prevData,
-            [name] : value
+            [name]: value
         }));
     }
 
     const addFilters = () => {
         const newFilters = [];
 
-        if(values.search.trim()) 
-        {
+        if (values.search.trim()) {
             newFilters.push({
                 type: 'search',
                 value: values.search.trim()
             });
         }
 
-        if(values.filter)
-        {
+        if (values.filter) {
             newFilters.push({
                 type: 'genre',
                 value: values.filter
@@ -44,12 +44,12 @@ export default function BooksPage() {
 
             newFilters.forEach(newFilter => {
                 const isDuplicate = updated.some(
-                    f => 
-                        f.type === newFilter &&
+                    f =>
+                        f.type === newFilter.type &&
                         f.value.toLowerCase() === newFilter.value.toLowerCase()
                 );
 
-                if(!isDuplicate)
+                if (!isDuplicate)
                     updated.push(newFilter);
             });
 
@@ -63,7 +63,7 @@ export default function BooksPage() {
     };
 
     const removeFilter = (indexToRemove) => {
-        setFilters(prev => 
+        setFilters(prev =>
             prev.filter((_, index) => index !== indexToRemove)
         );
     };
@@ -71,16 +71,31 @@ export default function BooksPage() {
     const buildQuery = () => {
         const params = new URLSearchParams();
 
+        if (values.search.trim()) {
+            params.append('search', values.search.trim());
+        }
+
         filters.forEach(filter => {
             params.append(filter.type, filter.value);
-        })
+        });
 
         return params.toString();
-    }
+    };
 
-    const handleSubmit = async (e) => {
+    const handleKeyDown = (e) => {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            addFilters();
+            submitSearch();
+        }
+    };
+
+    const handleSubmit = (e) => {
         e.preventDefault();
+        submitSearch();
+    };
 
+    const submitSearch = async () => {
         try {
             const query = buildQuery();
 
@@ -88,23 +103,23 @@ export default function BooksPage() {
                 `http://localhost:3000/api/user/search-books?${query}`,
                 {
                     method: 'GET',
-                    credentials: include
+                    credentials: 'include'
                 }
             );
 
             const data = await response.json();
 
-            if(!response.ok)
-            {
-                console.log(data.err || 'an error occured') //set error state later?
+            if (!response.ok) {
+                console.log(data.err || 'an error occured');
                 return;
             }
 
             console.log('books fetched', data);
+            setBooks(data);
         } catch (err) {
-            console.error(err); //set error state later?
+            console.error(err);
         }
-    }
+    };
 
     return (
         <div className="books-page">
@@ -117,20 +132,22 @@ export default function BooksPage() {
 
                     <div id="search-container">
                         <h3>Search Books</h3>
-                        <input 
-                        id="search-bar" 
-                        name="search" 
-                        type="text" 
-                        placeholder="Search by title or author..."
-                        value={values.search}
-                        onChange={handleChange}></input>
+                        <input
+                            id="search-bar"
+                            name="search"
+                            type="text"
+                            placeholder="Search by title or author..."
+                            value={values.search}
+                            onChange={handleChange}
+                            onKeyDown={handleKeyDown}>
+                        </input>
                     </div>
 
                     <div id="filter-container">
                         <span>Add Filter:
                             <select id="filters" name="filter"
-                            value={values.filter}
-                            onChange={handleChange}>
+                                value={values.filter}
+                                onChange={handleChange}>
                                 <option value="">Select Genre</option>
                                 <option value="fiction">Fiction</option>
                                 <option value="non-fiction">Non-Fiction</option>
@@ -148,19 +165,27 @@ export default function BooksPage() {
 
                         <div id="filters-components">
                             {filters.map((filter, i) => (
-                                <Filter 
-                                    key={i} 
+                                <Filter
+                                    key={i}
                                     value={filter}
                                     onRemove={() => removeFilter(i)}></Filter>
                             ))}
                         </div>
-                        
+
                         <div id="buttons-container">
                             <button id="submit-filter" onClick={addFilters}>Add Filters</button>
                             <button id="submit-search" onClick={handleSubmit}>Search</button>
                         </div>
                     </div>
-                    <div id="found-books"></div>
+                    <div id="found-books">
+                        {books.length > 0 ? (
+                            books.map((book) => (
+                                <BookCard key={book.id} book={book} />
+                            ))
+                        ) : (
+                            <p>No books found.</p>
+                        )}
+                    </div>
                 </div>
             </main>
             <Footer />

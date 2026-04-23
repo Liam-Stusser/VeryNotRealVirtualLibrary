@@ -1,0 +1,121 @@
+.book-card {
+    display: flex;
+    flex-direction: column;
+
+    width: 240px;
+    height: 420px; 
+
+    background: rgba(20, 20, 25, 0.9);
+    border: 1px solid rgba(212, 175, 55, 0.35);
+    border-radius: 14px;
+
+    padding: 14px;
+    color: #E5E7EB;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.book-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--accent-gold);
+    box-shadow: 0 12px 30px rgba(212, 175, 55, 0.15);
+}
+
+.book-cover-wrapper {
+    width: 100%;
+    height: 180px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+    border-radius: 10px;
+
+    background: #111;
+}
+
+.book-cover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.book-card:hover .book-cover {
+    transform: scale(1.05);
+}
+
+.book-info {
+    display: flex;
+    flex-direction: column;
+
+    flex: 1; 
+}
+
+.book-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 2;  
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+
+    min-height: 2.6em; 
+}
+
+.book-author {
+    font-size: 0.9rem;
+    color: #9CA3AF;
+}
+
+.book-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    margin-top: 6px;
+}
+
+.book-genre {
+    background: rgba(212, 175, 55, 0.15);
+    color: var(--accent-gold);
+    padding: 3px 8px;
+    border-radius: 999px;
+    font-weight: 500;
+}
+
+.book-pages {
+    color: #9CA3AF;
+}
+
+.book-stock {
+    font-size: 0.85rem;
+    color: #A7F3D0;
+}
+
+.borrow-btn {
+    margin-top: auto;
+
+    padding: 8px;
+    font-size: 0.95rem;
+    font-weight: 600;
+
+    color: #0F1720;
+    background: linear-gradient(
+        to right,
+        var(--accent-gold),
+        #f1d27a
+    );
+
+    border: none;
+    border-radius: 10px;
+
+    cursor: pointer;
+    box-shadow: 0 6px 18px rgba(212, 175, 55, 0.25);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.borrow-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 28px rgba(212, 175, 55, 0.4);
+}

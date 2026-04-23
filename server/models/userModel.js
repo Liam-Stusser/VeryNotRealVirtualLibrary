@@ -17,3 +17,31 @@ export const findUserById = async (id) => {
     const {rows} = await pool.query(query, [id]);
     return rows[0];
 }
+
+export const findBooks = async ({search, genre}) => {
+    let query = `
+        SELECT id, title, author, pages, total_stock, genre, cover_img_url
+        FROM books
+        WHERE 1=1
+        `;
+    
+    const params = [];
+    let i = 1;
+
+    if(search)
+    {
+        query += ` AND (title ILIKE $${i} OR author ILIKE $${i})`;
+        params.push(`%${search}%`);
+        i++;
+    }
+
+    if(genre)
+    {
+        query += ` AND genre = $${i}`;
+        params.push(genre);
+        i++;
+    }
+
+    const result = await pool.query(query, params);
+    return result.rows;
+}
