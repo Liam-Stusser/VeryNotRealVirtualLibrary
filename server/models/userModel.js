@@ -37,9 +37,10 @@ export const findBooks = async ({search, genre}) => {
 
     if(genre)
     {
-        query += ` AND genre = $${i}`;
-        params.push(genre);
-        i++;
+        const genres = Array.isArray(genre) ? genre : [genre];
+        const placeholders = genres.map(() => `$${i++}`).join(', ');
+        query += ` AND genre IN (${placeholders})`;
+        params.push(...genres);
     }
 
     const result = await pool.query(query, params);
