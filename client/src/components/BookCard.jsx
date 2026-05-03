@@ -2,6 +2,34 @@ import React from 'react';
 import '../styles/bookCard.css';
 
 export default function BookCard({ book }) {
+    const [stock, setStock] = React.useState(book.total_stock);
+    
+    const handleBorrow = async () => {
+        try {
+            const response = await fetch(`http://localhost:3000/api/user/borrow`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                credentials: 'include',
+                body: JSON.stringify({ bookId: book.id })
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                alert('Book borrowed successfully! Check your account for due date details.');
+                setStock(prevStock => prevStock - 1);
+            }
+            else {
+                alert(`Error borrowing book: ${data.error}`);
+            }
+
+        } catch (err) {
+            alert('An error occurred while borrowing the book.');
+            console.error(err);
+        }
+    }
     return (
         <div className="book-card">
             <div className="book-cover-wrapper">
@@ -22,10 +50,10 @@ export default function BookCard({ book }) {
                 </div>
 
                 <p className="book-stock">
-                    {book.total_stock > 0 ? `In stock: ${book.total_stock}` : "Out of stock"}
+                    {stock > 0 ? `In stock: ${stock}` : "Out of stock"}
                 </p>
 
-                <button className="borrow-btn">
+                <button className="borrow-btn" disabled={stock === 0} onClick={handleBorrow}>
                     Borrow
                 </button>
             </div>

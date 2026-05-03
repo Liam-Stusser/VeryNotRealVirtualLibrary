@@ -30,8 +30,8 @@ export default function AdminDashboard() {
         bookId: '',
         title: '',
         author: '',
-        pages: 1,
-        copies: 1,
+        pages: null,
+        copies: null,
         genre: '',
         coverImage: ''
     });
@@ -299,14 +299,14 @@ export default function AdminDashboard() {
 
                         <div className="form-group">
                             <label htmlFor="pages">Pages</label>
-                            <input type="number" id="pages" name="pages" min="1" 
+                            <input type="number" id="pages" name="pages"  
                              value={modifyBooksForm.pages}
                              onChange={(e) => handleChange(e, setModifyBooksForm)} />
                         </div>
 
                         <div className="form-group">
                             <label htmlFor="copies">Copies</label>
-                            <input type="number" id="copies" name="copies" min="1" 
+                            <input type="number" id="copies" name="copies"
                              value={modifyBooksForm.copies}
                              onChange={(e) => handleChange(e, setModifyBooksForm)} />
                         </div>
