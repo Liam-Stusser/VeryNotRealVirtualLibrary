@@ -81,3 +81,94 @@ export const borrowBook = async (userId, bookId) => {
         client.release();
     }
 };
+
+export const getProfile = async (userId) => {
+    const query = `
+        SELECT 
+            id,
+            username,
+            email,
+            created_at AS "createdAt",
+            (SELECT COUNT(*) FROM loans WHERE user_id = $1) AS "totalBorrowed"
+        FROM users
+        WHERE id = $1
+    `;
+    const { rows } = await pool.query(query, [userId]);
+    return rows[0];
+};
+ 
+export const getBorrowedBooks = async (userId) => {
+    const query = `
+        SELECT
+            l.id         AS id,
+            b.title,
+            b.author,
+            b.genre,
+            b.cover_img_url AS "coverImgUrl",
+            l.due_at     AS "dueDate"
+        FROM loans l
+        JOIN books b ON l.book_id = b.id
+        WHERE l.user_id = $1
+          AND l.returned_at IS NULL
+        ORDER BY l.due_at ASC
+    `;
+    const { rows } = await pool.query(query, [userId]);
+    return rows;
+};
+ 
+export const returnBook = async (userId, loanId) => {
+    const client = await pool.connect();
+    try {
+        await client.query('BEGIN');
+ 
+        const loanResult = await client.query(
+            `UPDATE loans
+             SET returned_at = NOW()
+             WHERE id = $1 AND user_id = $2 AND returned_at IS NULL
+             RETURNING *`,
+            [loanId, userId]
+        );
+ 
+        if (loanResult.rows.length === 0) {
+            await client.query('ROLLBACK');
+            throw new Error('Loan not found or already returned');
+        }
+ 
+        const { book_id } = loanResult.rows[0];
+ 
+        await client.query(
+            `UPDATE books
+             SET total_stock = total_stock + 1
+             WHERE id = $1`,
+            [book_id]
+        );
+ 
+        await client.query('COMMIT');
+        return loanResult.rows[0];
+    } catch (err) {
+        await client.query('ROLLBACK');
+        throw err;
+    } finally {
+        client.release();
+    }
+};
+ 
+export const getBorrowHistory = async (userId) => {
+    const query = `
+        SELECT
+            l.id              AS id,
+            b.title,
+            b.author,
+            b.genre,
+            b.cover_img_url   AS "coverImgUrl",
+            l.checked_out_at  AS "checkedOutAt",
+            l.returned_at     AS "returnedAt"
+        FROM loans l
+        JOIN books b ON l.book_id = b.id
+        WHERE l.user_id = $1
+          AND l.returned_at IS NOT NULL
+        ORDER BY l.returned_at DESC
+    `;
+    const { rows } = await pool.query(query, [userId]);
+    return rows;
+};

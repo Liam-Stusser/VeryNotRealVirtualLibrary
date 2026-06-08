@@ -76,6 +76,32 @@ router.delete('/delete-book', ensureAdmin, async (req, res) => {
         res.status(500).json({error: 'Internal server error'});
     }
     
-})
+});
+
+router.get('/overdue-books', async (req, res) => {
+    if (!req.isAuthenticated() || req.user.role !== 'admin') {
+        return res.status(401).json({ error: 'Unauthorized' });
+    }
+    try {
+        const books = await adminModel.getOverdueBooks();
+        res.json(books);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: `Internal server error: ${err.message}` });
+    }
+});
+ 
+router.post('/force-return', async (req, res) => {
+    if (!req.isAuthenticated() || req.user.role !== 'admin') {
+        return res.status(401).json({ error: 'Unauthorized' });
+    }
+    try {
+        const result = await adminModel.forceReturnBook(req.body.loanId);
+        res.json(result);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: `Internal server error: ${err.message}` });
+    }
+});
 
 export default router;
