@@ -282,3 +282,51 @@ Next up is the **books page**, which is basically the core of the entire app. I�
 I *could* build out a full checkout page with due dates and extra details, but honestly, there’s something really nice about just clicking one button and being done. Simple, fast, clean...that’s the goal.
 
 ---
+
+# 6/7/26
+
+**Books Page, User Dashboard, and Admin Dashboard Completion**
+
+It has been quite a while since my last update in this journal, though that certainly does not mean the project has been inactive. A lot of work has been done over the last couple of months; I have simply fallen behind on documenting it. That is probably for the best though—if I made an entry for every day I touched the project, this README would eventually become impossible to read.
+
+Since the last log, I have finished the books page, completed the user dashboard, and wrapped up the remaining work on the admin dashboard. I have also spent a considerable amount of time debugging and refining these features.
+
+Progress on the project has been slower recently because I have been working on a website for a client's business, which naturally had to take priority over this fictional library project. On top of that, life has continued throwing plenty of surprises my way. I had hoped things were beginning to settle down, but apparently life had other plans. If I had been able to dedicate consistent time and energy to this project, it probably would have been finished by the end of April. Sometimes things simply do not go according to schedule.
+
+### Books Page
+
+The books page turned out to be more interesting than I initially expected. I created a reusable `BookCard` component that accepts props for dynamically rendering book data. That part was fairly straightforward React work.
+
+The filtering system, however, ended up being the most challenging piece. I wanted users to be able to filter by multiple genres and authors instead of limiting them to a single option. The frontend implementation was simple enough, but dynamically building the SQL queries on the backend took considerably more effort.
+
+To make this work, I split the author and genre parameters into arrays and used them to dynamically construct SQL queries using the `IN` keyword. This allowed the database to return books matching multiple selected authors or genres.
+
+I also implemented the book checkout model, which was my first real use of `client.query()` transactions. It was also the first time I had a practical reason to use a `finally` block inside a `try/catch`, which was nice to finally see used outside of examples.
+
+### User Dashboard
+
+I modeled the user dashboard after the admin dashboard. Since the purpose of this project is to demonstrate engineering principles rather than build the world's most complicated library system, I felt a clean and simple design was the better choice.
+
+Many of the models and routes could be reused from existing functionality, particularly from the books page and admin dashboard. Displaying a user's borrowing history required joining the users and books tables, and returning books once again involved using `client.query()` transactions. Fortunately, by this point those patterns had become familiar and were fairly straightforward to implement.
+
+### Admin Dashboard Completion
+
+The final major piece was finishing the overdue books section of the admin dashboard.
+
+I briefly considered creating another card component for overdue books, but decided that a more minimal design made more sense. Instead, overdue books are displayed in a simple list with return controls.
+
+To prevent the page from becoming cluttered, I limited the query to displaying only ten overdue books at a time using SQL's `LIMIT 10`.
+
+### Next Steps
+
+The next feature on the list is the homepage carousel, which was originally postponed until the book management systems were complete. Once that is finished, only some polishing and final improvements should remain before the site is functionally complete.
+
+I have also changed my original deployment plans. Rather than hosting the project on a Raspberry Pi as I initially intended, I plan to deploy it using AWS. Since AWS experience appears almost everywhere in job postings, it seems like a good opportunity to learn the platform and gain some practical experience.
+
+I have also decided to convert the project to TypeScript once the current functionality is complete. I have spent the last few days studying TypeScript, and coming from a background with Java and especially C#, the transition feels very natural. It seems like a worthwhile addition considering how frequently TypeScript appears in modern web development roles.
+
+Overall, this ended up being a fairly long entry, but there has been a lot of progress over the last few months that never made it into the journal. Between client work and some ongoing personal circumstances, finding consistent time and energy has been difficult. Still, the Virtual Library is finally approaching the finish line, and there is definitely some light at the end of the tunnel.
+
+I already have the next project planned as well, which will focus on ASP.NET and experimenting with building a custom ECS-inspired architecture for web applications.
+
+---
