@@ -1,11 +1,33 @@
 import React from 'react';
 import HeadNavBar from "../components/HeadNavBar.jsx";
 import Footer from "../components/Footer.jsx";
+import Carousel from '../components/Carousel.jsx';
 import '../styles/landingPage.css';
+import '../styles/carousel.css';
 
 export default function landingPage() {
+const [books, setBooks] = React.useState([]);
+
+React.useEffect(() => {
+    const fetchBooks = async () => {
+        try {
+            const response = await fetch('http://localhost:3000/api/user/popular-books', {
+                method: 'GET'
+            });
+            const data = await response.json();
+            if (!response.ok) {
+                console.log(data.err || 'an error occured');
+                return;
+            }
+            setBooks(data);
+        } catch (error) {
+            console.error('Error fetching books:', error);
+        }
+    }
+    fetchBooks();
+}, []);
     return (
-        <div className = "app-shell">
+        <div className="app-shell">
             <HeadNavBar></HeadNavBar>
             <main className="app-content">
                 <div id="landing-page-banner" className="app-content">
@@ -30,8 +52,9 @@ export default function landingPage() {
                 <div id="landing-page-content-two" className="app-content-two">
                     <h1>Take a look at some of our most popular books right now!</h1>
                     <div id="carousel-container" className="app-content-two">
-                        <p>TODO: add carousel react component here</p></div>
+                        <Carousel books={books} />
                     </div>
+                </div>
                 <div id="landing-page-content-three" className="app-content-three">
                     <h1>Sign up and join our community today!</h1>
                     <div id="content-three-container" className="app-content-three">

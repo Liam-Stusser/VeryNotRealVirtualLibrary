@@ -172,3 +172,14 @@ export const getBorrowHistory = async (userId) => {
     const { rows } = await pool.query(query, [userId]);
     return rows;
 };
+
+export const getPopularBooks = async () => {
+    const query = `
+        SELECT id, title, author, genre, cover_img_url AS "coverImgUrl"
+        FROM books
+        ORDER BY checkout_count DESC
+        LIMIT 10
+        `;
+        const { rows } = await pool.query(query);
+        return rows;
+}

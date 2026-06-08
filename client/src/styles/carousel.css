@@ -1,0 +1,157 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    gap: 0;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+}
+
+.carousel {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.carousel-track {
+    display: flex;
+    width: max-content;
+    gap: 2rem;
+
+    animation: scroll-carousel 40s linear infinite;
+}
+
+.carousel:hover .carousel-track {
+    animation-play-state: paused;
+}
+
+.carousel-card {
+    display: flex;
+    flex-direction: column;
+
+    width: 300px;
+    height: 300px;
+
+    flex-shrink: 0;
+
+    background: rgba(20, 20, 25, 0.9);
+    border: 1px solid rgba(212, 175, 55, 0.35);
+    border-radius: 16px;
+
+    padding: 18px;
+
+    color: #E5E7EB;
+
+    box-shadow:
+        0 8px 20px rgba(0,0,0,.4);
+
+    transition:
+        transform .3s ease,
+        border-color .3s ease,
+        box-shadow .3s ease;
+}
+
+.carousel-card:hover {
+    transform: translateY(-8px);
+
+    border-color: var(--accent-gold);
+
+    box-shadow:
+        0 12px 30px rgba(212,175,55,.2);
+}
+
+.carousel-cover-wrapper {
+    width: 100%;
+    height: 210px;
+
+    overflow: hidden;
+
+    border-radius: 12px;
+
+    background: #111;
+}
+
+.carousel-cover {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: transform .3s ease;
+}
+
+.carousel-card:hover .carousel-cover {
+    transform: scale(1.05);
+}
+
+.carousel-info {
+    display: flex;
+    flex-direction: column;
+
+    flex: 1;
+
+    margin-top: 1rem;
+}
+
+.carousel-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+
+    overflow: hidden;
+}
+
+.carousel-author {
+    margin-top: .5rem;
+
+    color: #9CA3AF;
+
+    font-size: .95rem;
+}
+
+.carousel::before,
+.carousel::after {
+    content: "";
+    position: absolute;
+
+    top: 0;
+    width: 120px;
+    height: 100%;
+
+    z-index: 2;
+}
+
+.carousel::before {
+    left: 0;
+
+    background:
+        linear-gradient(
+            to right,
+            #0F1720,
+            transparent
+        );
+}
+
+.carousel::after {
+    right: 0;
+
+    background:
+        linear-gradient(
+            to left,
+            #0F1720,
+            transparent
+        );
+}
+
+@keyframes scroll-carousel {
+
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(calc(-50% - 1rem));
+    }
+
+}

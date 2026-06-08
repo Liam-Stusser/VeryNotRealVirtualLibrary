@@ -82,4 +82,14 @@ router.get('/borrow-history', async (req, res) => {
     }
 });
 
+router.get('/popular-books', async (req, res) => {
+    try {
+        const books = await userModel.getPopularBooks();
+        res.json(books);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: `Internal server error: ${err.message}`});
+    }
+});
+
 export default router;

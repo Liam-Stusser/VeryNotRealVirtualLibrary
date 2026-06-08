@@ -128,6 +128,7 @@ export default function AdminDashboard() {
                 return;
             }
             console.log('Book added successfully:', data);
+            alert(`Book added successfully with ID: ${data.bookId}`);
         } catch (err) {
             console.error(err);
             setError('Server not reachable');
@@ -150,6 +151,7 @@ export default function AdminDashboard() {
                 return;
             }
             console.log('Book modified successfully:', data);
+            alert(`Book with ID ${modifyBooksForm.bookId} modified successfully!`);
         } catch (err) {
             console.error(err);
             setError('Server not reachable');
@@ -176,6 +178,7 @@ export default function AdminDashboard() {
                 return;
             }
             console.log('Book deleted successfully:', data);
+            alert(`Book with ID ${deleteBookForm.bookId} deleted successfully!`);
         } catch (err) {
             console.error(err);
             setError('Server not reachable');
