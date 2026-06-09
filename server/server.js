@@ -2,6 +2,8 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 import express from 'express';
+import helmet from 'helmet';
+import compression from 'compression';
 import session from './config/session.js';
 import passport from './config/passport.js';
 
