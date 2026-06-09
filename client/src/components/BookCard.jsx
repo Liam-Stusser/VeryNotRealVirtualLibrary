@@ -6,7 +6,7 @@ export default function BookCard({ book }) {
     
     const handleBorrow = async () => {
         try {
-            const response = await fetch(`http://localhost:3000/api/user/borrow`, {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/user/borrow`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

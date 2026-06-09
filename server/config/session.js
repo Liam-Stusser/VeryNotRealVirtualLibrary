@@ -12,8 +12,9 @@ const sessionMiddleware = session({
     saveUninitialized: false,
     cookie: {
         httpOnly: true,
-        secure: false, //TODO set up https and change this to true in production
-        maxAge: 1000 * 60 * 60 * 24 //1 day
+        secure: false,
+        maxAge: 1000 * 60 * 60 * 24, //1 day
+        sameSite: 'lax'
     }
 });
 

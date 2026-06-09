@@ -14,15 +14,19 @@ const app = express();
 
 //Middleware
 app.use(cors({
-    origin: 'http://localhost:5173', //change later to actual frontend url
+    origin: process.env.ClientURL,
     credentials: true 
 }))
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
+app.set('trust proxy', 1); //Trust first proxy, needed for secure cookies when behind a proxy 
+
 app.use(session);
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(helmet()); //Security headers, can be configured more if needed
+app.use(compression()); //Compress responses for better performance
 
 //Routes
 app.use('/api/auth', authRoutes); 

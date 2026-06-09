@@ -54,7 +54,7 @@ export default function AdminDashboard() {
 
     const fetchOverdueBooks = async () => {
         try {
-            const response = await fetch('http://localhost:3000/api/admin/overdue-books', {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/admin/overdue-books`, {
                 method: 'GET',
                 credentials: 'include'
             });
@@ -73,7 +73,7 @@ export default function AdminDashboard() {
     const handleForceReturn = async (loanId) => {
         setError('');
         try {
-            const response = await fetch('http://localhost:3000/api/admin/force-return', {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/admin/force-return`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 credentials: 'include',
@@ -96,7 +96,7 @@ export default function AdminDashboard() {
         setError('');
         try {
             const query = new URLSearchParams(findBookForm).toString();
-            const response = await fetch(`http://localhost:3000/api/admin/find-book?${query}`, {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/admin/find-book?${query}`, {
                 method: 'GET',
                 credentials: 'include'
             });
@@ -116,7 +116,7 @@ export default function AdminDashboard() {
         e.preventDefault();
         setError('');
         try {
-            const response = await fetch('http://localhost:3000/api/admin/add-book', {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/admin/add-book`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 credentials: 'include',
@@ -139,7 +139,7 @@ export default function AdminDashboard() {
         e.preventDefault();
         setError('');
         try {
-            const response = await fetch('http://localhost:3000/api/admin/modify-book', {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/admin/modify-book`, {
                 method: 'PUT',
                 headers: { 'Content-Type': 'application/json' },
                 credentials: 'include',
@@ -166,7 +166,7 @@ export default function AdminDashboard() {
             return;
         }
         try {
-            const response = await fetch('http://localhost:3000/api/admin/delete-book', {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/admin/delete-book`, {
                 method: 'DELETE',
                 headers: { 'Content-Type': 'application/json' },
                 credentials: 'include',

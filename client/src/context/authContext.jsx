@@ -12,7 +12,7 @@ export function AuthProvider({children}) {
     })
 
     useEffect(() => {
-        fetch('http://localhost:3000/api/auth/session', {
+        fetch('${import.meta.env.VITE_API_URL}/api/auth/session', {
             credentials: 'include'
         })
         .then(res => res.json())

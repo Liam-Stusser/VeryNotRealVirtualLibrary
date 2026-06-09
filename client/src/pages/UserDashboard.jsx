@@ -18,7 +18,7 @@ export default function UserDashboard() {
 
     const fetchProfile = async () => {
         try {
-            const response = await fetch('http://localhost:3000/api/user/profile', {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/user/profile`, {
                 method: 'GET',
                 credentials: 'include'
             });
@@ -36,7 +36,7 @@ export default function UserDashboard() {
 
     const fetchBorrowedBooks = async () => {
         try {
-            const response = await fetch('http://localhost:3000/api/user/borrowed-books', {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/user/borrowed-books`, {
                 method: 'GET',
                 credentials: 'include'
             });
@@ -57,7 +57,7 @@ export default function UserDashboard() {
 
     const fetchBorrowHistory = async () => {
         try {
-            const response = await fetch('http://localhost:3000/api/user/borrow-history', {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/user/borrow-history`, {
                 method: 'GET',
                 credentials: 'include'
             });
@@ -76,7 +76,7 @@ export default function UserDashboard() {
     const handleReturnBook = async (loanId) => {
         setError('');
         try {
-            const response = await fetch('http://localhost:3000/api/user/return-book', {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/user/return-book`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 credentials: 'include',

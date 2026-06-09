@@ -29,7 +29,7 @@ export default function LoginPage() {
         setError('');
 
         try {
-            const response = await fetch('http://localhost:3000/api/auth/login', {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -39,7 +39,7 @@ export default function LoginPage() {
             });
 
             const data = await response.json();
-            console.log('Login response data:', data); // TEMP DEBUG
+
             if (!response.ok) {
                 setError(data.error || 'An error occurred');
                 return;

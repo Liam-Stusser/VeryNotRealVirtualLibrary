@@ -11,7 +11,7 @@ const [books, setBooks] = React.useState([]);
 React.useEffect(() => {
     const fetchBooks = async () => {
         try {
-            const response = await fetch('http://localhost:3000/api/user/popular-books', {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/user/popular-books`, {
                 method: 'GET'
             });
             const data = await response.json();

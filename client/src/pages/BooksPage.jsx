@@ -100,7 +100,7 @@ export default function BooksPage() {
             const query = buildQuery();
 
             const response = await fetch(
-                `http://localhost:3000/api/user/search-books?${query}`,
+                `${import.meta.env.VITE_API_URL}/api/user/search-books?${query}`,
                 {
                     method: 'GET',
                     credentials: 'include'
