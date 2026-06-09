@@ -5,7 +5,7 @@
 A full‑stack library platform demonstrating authentication, role based dashboards, PostgreSQL data persistence, and CRUD operations.
 
 ## Live Demo
-[Will provide here when its up and running]
+http://ec2-16-144-71-150.us-west-2.compute.amazonaws.com/
 
 ## Features
 - User authentication (login/signup)
