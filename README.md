@@ -330,3 +330,25 @@ Overall, this ended up being a fairly long entry, but there has been a lot of pr
 I already have the next project planned as well, which will focus on ASP.NET and experimenting with building a custom ECS-inspired architecture for web applications.
 
 ---
+
+# 6/26/26
+
+## Completed and Deployed
+
+The final feature of the site—the homepage carousel—was completed a few weeks ago. Thankfully, implementing it turned out to be much more straightforward than I expected thanks to a React carousel tutorial on YouTube. Sometimes it's nice when something actually goes according to plan.
+
+The site has also now been successfully deployed on AWS. Learning AWS was a bit of a hurdle at first, but once I became comfortable connecting over SSH and navigating the environment, the rest of the deployment process went fairly smoothly. It was a great learning experience, and I'm glad I decided to deploy it there instead of sticking with my original Raspberry Pi plan.
+
+Earlier in the project, I mentioned converting the entire codebase to TypeScript. After giving it some thought, I've decided to leave this project as a standard JavaScript/Node.js application. The main reason I wanted to perform the conversion was to gain experience with TypeScript, but I've since been getting plenty of that while building my client's website. At this point, I don't think spending the time refactoring roughly 4,000–5,000 lines of working code would be the best use of my time.
+
+I also don't plan to enable HTTPS for this project. Doing so would require purchasing a domain and setting up SSL certificates, which doesn't really make sense for what is ultimately a portfolio and learning project. HTTP is more than sufficient for demonstrating the application's functionality.
+
+There are still a handful of improvements I could make—for example, breaking the admin dashboard into smaller reusable components or adding loading indicators for longer API calls—but at this point those are quality-of-life improvements rather than core functionality. The application accomplishes everything I originally set out to build, and I'm happy with where it ended up.
+
+Looking back, this project taught me far more than I originally expected. Beyond improving my React and Express skills, I gained practical experience designing relational databases, implementing authentication and authorization with Passport, managing sessions, writing SQL transactions, dynamically constructing queries, deploying a full-stack application on AWS, and debugging a project that eventually grew to several thousand lines of code. More importantly, it gave me confidence that I can take a project from an initial idea all the way through deployment.
+
+It took me considerably longer than I had hoped to finish this project, but sometimes life throws unexpected challenges your way. All you can really do is keep moving forward one step at a time. Despite everything that happened over the past several months, I'm proud that I stuck with it and saw it through to completion.
+
+On to the next project.
+
+---
